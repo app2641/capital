@@ -1,0 +1,15 @@
+#! /usr/bin/env ruby
+require 'rubygems'
+
+$LOAD_PATH.unshift(File.dirname(__FILE__)+'/../lib') unless $LOAD_PATH.include?(File.dirname(__FILE__)+'/../lib')
+
+require 'capital'
+
+begin
+    Capital::InputParser.new.validate ARGV
+    Capital::Main.new.getCapital ARGV
+rescue => e
+    puts e
+    STDERR.puts "\nCapital: 処理は中断しました"
+  exit 130
+end
